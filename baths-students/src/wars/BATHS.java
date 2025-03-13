@@ -4,6 +4,7 @@ import java.io.*;
 /**
  * This interface specifies the behaviour expected from the BATHS
  system as required for 5COM2007 Cwk1B BATHS  - Feb 2025
+ * this is a test comment
  * 
  * @author A.A.Marczyk 
  * @version 05/02/25 
@@ -124,7 +125,7 @@ public interface BATHS extends Serializable
       * -1 No such encounter
       * Ensure that the state of the war chest is also included in the return message.
       * @param encNo is the number of the encounter
-      * @return a String showing the result of fighting the encounter test
+      * @return a String showing the result of fighting the encounter
       */ 
     public String fightEncounter(int encNo);
     
