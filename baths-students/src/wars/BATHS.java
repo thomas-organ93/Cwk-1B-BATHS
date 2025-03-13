@@ -124,7 +124,7 @@ public interface BATHS extends Serializable
       * -1 No such encounter
       * Ensure that the state of the war chest is also included in the return message.
       * @param encNo is the number of the encounter
-      * @return a String showing the result of fighting the encounter
+      * @return a String showing the result of fighting the encounter test
       */ 
     public String fightEncounter(int encNo);
     
