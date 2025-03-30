@@ -4,7 +4,7 @@ import java.io.*;
 /**
  * This interface specifies the behaviour expected from the BATHS
  system as required for 5COM2007 Cwk1B BATHS  - Feb 2025
- * this is a test comment
+ * 
  * 
  * @author A.A.Marczyk 
  * @version 05/02/25 
