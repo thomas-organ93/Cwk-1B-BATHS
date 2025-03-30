@@ -13,9 +13,9 @@ public class Frigate extends Ship {
     private int cannons;
     private Boolean hasPinnace;
     
-    // Input: Ship Name, Captain Name, Battle Skill, Cannons, Has Pinnace
-    public Frigate(String n, String captain, int sk, int cannon, Boolean pin) {
-        super(n, captain, sk, 0); // Set fee to zero
+    // Input: Ship Name, Captain Name, Battle Skill, Ship State, Cannons, Has Pinnace
+    public Frigate(String n, String captain, int sk, int cannon, Boolean pin, ShipState state) {
+        super(n, captain, sk, 0, state); // Set commission fee to zero
         this.cannons = cannon;
         this.hasPinnace = pin;
         super.setCommissionFee(10 * cannons); // Set commission fee 10 * cannons. 
@@ -38,6 +38,7 @@ public class Frigate extends Ship {
         s = s + super.toString();
         s = s + "Cannons: " + cannons + "\n";
         s = s + "Pinnace: " + hasPinnace + "\n";
+        s = s + "Ship State: " + super.toStringState() + "\n";
         return s;
     }
     

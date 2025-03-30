@@ -12,9 +12,9 @@ public class Sloop extends Ship {
     // Fields declared
     private Boolean hasDoctor;
     
-    // Input: Ship Name, Captain Name, Commission Fee, Has Doctor
-    public Sloop(String n, String captain, int fee, Boolean doctor) {
-        super(n, captain, 5, fee); // Set battle skill = 5
+    // Input: Ship Name, Captain Name, Commission Fee, Ship State, Has Doctor
+    public Sloop(String n, String captain, int fee, Boolean doctor, ShipState state) {
+        super(n, captain, 5, fee, state); // Set battle skill = 5
         this.hasDoctor = doctor;
     }
     
@@ -29,6 +29,7 @@ public class Sloop extends Ship {
         s = s + "####SLOOP#####\n";
         s = s + super.toString();
         s = s + "Has Doctor: " + hasDoctor + "\n";
+        s = s + "Ship State: " + super.toStringState() + "\n";
         return s;
     }
 }

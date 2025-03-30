@@ -14,9 +14,9 @@ public class ManOWar extends Ship {
     private int decks;
     private int marines;
     
-    // Input: Ship Name, Captain Name, Battle Skill, Decks, Marines
-    public ManOWar(String n, String captain, int sk, int deck, int m) {
-        super(n, captain, sk, 500); // Set commission fee = 500
+    // Input: Ship Name, Captain Name, Battle Skill, Ship State, Decks, Marines
+    public ManOWar(String n, String captain, int sk, int deck, int m, ShipState state) {
+        super(n, captain, sk, 500, state); // Set commission fee = 500
         this.decks = deck;
         this.marines = m;
         
@@ -42,6 +42,7 @@ public class ManOWar extends Ship {
         s = s + super.toString();
         s = s + "Decks: " + decks + "\n";
         s = s + "Marines: " + marines + "\n";
+        s = s + "Ship State: " + super.toStringState() + "\n";
         return s;
     }
     
