@@ -8,7 +8,7 @@ package wars;
  *
  * @author thomasorgan
  */
-public class ShipEncounterTester {
+public class BackendTester {
     
     public static void main(String[] args) {
         
