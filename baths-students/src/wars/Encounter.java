@@ -9,6 +9,7 @@ package wars;
  * @author thomasorgan
  */
 public class Encounter {
+    //  Fields declared
     private int id;
     private EncounterType type;
     private String location;
@@ -16,6 +17,7 @@ public class Encounter {
     private int prize;
     
     
+    //  Constructor Input: Encounter Id, Encounter Type, Location, Battle Skill, Winning Prize
     public Encounter(int id, EncounterType type, String location, int skill, int prize) {
         this.id = id;
         this.type = type;
@@ -29,38 +31,42 @@ public class Encounter {
         return id;
     }
     
-    // Return encounter type
+    //  Return encounter type
     public EncounterType getType() {
         return type;
     }
     
-    // Return encounter type (String)
+    //  Return encounter type (String)
     public String getStringType() {
         return type.toString();
     }
     
-    // Set enounter type
+    //  Set enounter type
     public void setEncounter(EncounterType type) {
         this.type = type;
     }
     
+    //  Return location
     public String viewLocation() {
         return location;
     }
     
+    //  Return battle skill
     public int viewSkill() {
         return skill;
     }
     
+    //  Return winning prize
     public int viewPrize() {
         return prize;
     }
     
+    //  Set winning prize
     public void setPrize(int value) {
         prize = value;
     }
     
-    
+    //  Return encounter information
     public String toString() {
         String s = "";
         s = s + "####ENCOUNTER####\n";
@@ -71,5 +77,4 @@ public class Encounter {
         s = s + "Prize Money: " + prize + "\n";
         return s;
     }
-    
 }

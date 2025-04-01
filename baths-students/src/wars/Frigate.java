@@ -9,11 +9,11 @@ package wars;
  * @author thomasorgan
  */
 public class Frigate extends Ship {
-    // Fields declared
+    //  Fields declared
     private int cannons;
     private Boolean hasPinnace;
     
-    // Input: Ship Name, Captain Name, Battle Skill, Ship State, Cannons, Has Pinnace
+    //  Constructor Input: Ship Name, Captain Name, Battle Skill, Ship State, Cannons, Has Pinnace
     public Frigate(String n, String captain, int sk, int cannon, Boolean pin, ShipState state) {
         super(n, captain, sk, 0, state); // Set commission fee to zero
         this.cannons = cannon;
@@ -21,16 +21,17 @@ public class Frigate extends Ship {
         super.setCommissionFee(10 * cannons); // Set commission fee 10 * cannons. 
     }
     
-    // Return cannon value
+    //  Return cannon value
     public int viewCannons() {
         return cannons;
     }
     
-    // Return pinnace boolean
+    //  Return pinnace boolean
     public Boolean checkPinnace() {
         return hasPinnace;
     }
     
+    //  Return ship information
     @Override
     public String toString() {
         String s = "";

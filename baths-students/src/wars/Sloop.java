@@ -9,20 +9,21 @@ package wars;
  * @author thomasorgan
  */
 public class Sloop extends Ship {
-    // Fields declared
+    //  Fields declared
     private Boolean hasDoctor;
     
-    // Input: Ship Name, Captain Name, Commission Fee, Ship State, Has Doctor
+    //  Constructor Input: Ship Name, Captain Name, Commission Fee, Ship State, Has Doctor
     public Sloop(String n, String captain, int fee, Boolean doctor, ShipState state) {
         super(n, captain, 5, fee, state); // Set battle skill = 5
         this.hasDoctor = doctor;
     }
     
-    // Return doctor boolean
+    //  Return doctor boolean
     public Boolean checkDoctor() {
         return hasDoctor;
     }
     
+    //  Return ship information
     @Override
     public String toString() {
         String s = "";

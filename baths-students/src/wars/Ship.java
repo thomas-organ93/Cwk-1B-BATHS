@@ -9,14 +9,14 @@ package wars;
  * @author thomasorgan
  */
 public class Ship {
-    // Fields declared
+    //  Fields declared
     private String name;
     private String captainName;
     private int commissionFee;
     private int skill;
     private ShipState state; // ShipState Class
 
-    // Input: Ship Name, Captain Name, Battle Skill, Commission Fee, Ship State
+    //  Constructor Input: Ship Name, Captain Name, Battle Skill, Commission Fee, Ship State
     public Ship(String name, String captain, int skill, int fee, ShipState state) {
         this.name = name;
         this.captainName = captain;
@@ -25,27 +25,27 @@ public class Ship {
         this.state = state;
     }
 
-    // Return ship name
+    //  Return ship name
     public String viewName() {
         return name;
     }
 
-    // Return captain name
+    //  Return captain name
     public String viewCaptain() {
         return captainName;
     }
     
-    // Return commission fee
+    //  Return commission fee
     public int getCommissionFee() {
         return commissionFee;
     }
     
-    // Set commission fee
+    //  Set commission fee
     public void setCommissionFee(int fee) {
         commissionFee = fee;
     }
     
-    // Return ship state
+    //  Return ship state
     public ShipState getState() {
         return state;
     }
@@ -55,11 +55,12 @@ public class Ship {
         return state.toString();
     }
     
-    // Set ship state
+    //  Set ship state
     public void setState(ShipState state) {
         this.state = state;
     }
 
+    //  Return ship information
     public String toString() {
         String s = "";
         s = s + "####SHIP####\n";

@@ -8,13 +8,12 @@ package wars;
  *
  * @author thomasorgan
  */
-
 public class ManOWar extends Ship {
-    // Fields declared
+    //  Fields declared
     private int decks;
     private int marines;
     
-    // Input: Ship Name, Captain Name, Battle Skill, Ship State, Decks, Marines
+    //  Constructor Input: Ship Name, Captain Name, Battle Skill, Ship State, Decks, Marines
     public ManOWar(String n, String captain, int sk, int deck, int m, ShipState state) {
         super(n, captain, sk, 500, state); // Set commission fee = 500
         this.decks = deck;
@@ -25,16 +24,17 @@ public class ManOWar extends Ship {
         }
     }
     
-    // Return decks value
+    //  Return decks value
     public int viewDecks() {
         return decks;
     }
     
-    // Return marines value
+    //  Return marines value
     public int viewMarines() {
         return marines;
     }
     
+    //  Return ship information
     @Override
     public String toString() {
         String s = "";
