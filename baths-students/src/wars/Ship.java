@@ -14,9 +14,9 @@ public class Ship {
     private String captainName;
     private int commissionFee;
     private int skill;
-    private ShipState state;
+    private ShipState state; // ShipState Class
 
-    // Input: Ship Name, Captain Name, Battle Skill, Commission Fee
+    // Input: Ship Name, Captain Name, Battle Skill, Commission Fee, Ship State
     public Ship(String name, String captain, int skill, int fee, ShipState state) {
         this.name = name;
         this.captainName = captain;
@@ -45,14 +45,17 @@ public class Ship {
         commissionFee = fee;
     }
     
+    // Return ship state
     public ShipState getState() {
         return state;
     }
     
+    // Return ship state string
     public String toStringState() {
         return state.toString();
     }
     
+    // Set ship state
     public void setState(ShipState state) {
         this.state = state;
     }

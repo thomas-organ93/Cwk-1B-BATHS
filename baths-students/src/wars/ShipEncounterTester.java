@@ -8,24 +8,46 @@ package wars;
  *
  * @author thomasorgan
  */
-public class ShipTester {
+public class ShipEncounterTester {
     
     public static void main(String[] args) {
         
+        // Create Ships
         ManOWar victory = new ManOWar("Victory", "Alan Aikan", 3, 3, 20, ShipState.RESERVE);
         Frigate sophie = new Frigate("Sophie", "Ben Baggins", 8, 16, true, ShipState.RESERVE);
         Sloop arrow = new Sloop("Arrow", "Dan Dare", 150, true, ShipState.RESERVE);
         
+        //  Create Encounter
+        Encounter trafalgar = new Encounter(1, EncounterType.BATTLE, "Trafalgar", 3, 300);
+        
+        // Print Ship Information
         System.out.println(victory.toString());
         System.out.println(sophie.toString());
         System.out.println(arrow.toString());
         
+        //  Print Encounter Information
+        System.out.println(trafalgar);
+        
+        // Ship State Testing 
         System.out.println("State is: " + arrow.getState());
         arrow.setState(ShipState.SUNK);
         System.out.println("State is: " + arrow.getState());
+        System.out.println();
         
+        // Encounter Testing
+         System.out.println("Encounter Type is: " + trafalgar.getType());
+         trafalgar.setEncounter(EncounterType.BLOCKADE);
+         System.out.println("Encounter Type is: " + trafalgar.getType());
+         System.out.println();
+        
+        // Ship State If Statement Testing
         if (arrow.getState() == ShipState.SUNK) {
             System.out.println(arrow.viewName() + " has sunk");
+        }
+        
+        // Encounter If Statement Testing
+        if (trafalgar.getType() == EncounterType.BLOCKADE) {
+            System.out.println("Encounter: " + trafalgar.viewLocation() + " has a blockade");
         }
         
     }
