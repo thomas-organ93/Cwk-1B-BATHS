@@ -6,8 +6,8 @@ import java.io.*;
  * This class implements the behaviour expected from the BATHS
  system as required for 5COM2007 Cwk1B BATHS - Feb 2025
  * 
- * @author A.A.Marczyk 
- * @version 16/02/25
+ * @author A.A.Marczyk, Nathan-McEvoy
+ * @version 02/04/25
  */
 
 public class SeaBattles implements BATHS 
