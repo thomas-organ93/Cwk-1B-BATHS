@@ -67,7 +67,7 @@ public class BlueAdmiral
      */
     public void addToSquadron(String shipName, Ship ship)
     {
-        squadron.put(shipname, ship);
+        squadron.put(shipName, ship);
     }
     
     /**
@@ -77,7 +77,7 @@ public class BlueAdmiral
      */
     public void changeShipState(String shipName, ShipState state)
     {
-        if (squadron.contains(shipName))
+        if (squadron.containsKey(shipName))
         {
             Ship ship = squadron.get(shipName);
             ship.setState(state);
