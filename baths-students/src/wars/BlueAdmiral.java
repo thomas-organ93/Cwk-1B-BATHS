@@ -90,9 +90,10 @@ public class BlueAdmiral
      */
     public String toString()
     {
+        String ships = String.join(", ", squadron.keySet());
         return "Admiral: " + name
                 + "\nWar Chest: " + warChest
-                + "\n Squadron: " + squadron.keySet();
+                + "\n Squadron: " + ships;
     }
     
 }
