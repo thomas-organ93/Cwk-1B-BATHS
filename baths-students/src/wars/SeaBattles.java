@@ -14,8 +14,7 @@ public class SeaBattles implements BATHS
 {
     // may have one HashMap and select on stat
 
-    private String admiral;
-    private double warChest;
+    private BlueAdmiral admiral;
 
 
 //**************** BATHS ************************** 
@@ -24,7 +23,7 @@ public class SeaBattles implements BATHS
      */  
     public SeaBattles(String adm)
     {
-      
+      this.admiral = new BlueAdmiral(adm, 1000.0);
         
        setupShips();
        setupEncounters();
@@ -37,7 +36,7 @@ public class SeaBattles implements BATHS
      */  
     public SeaBattles(String admir, String filename)  //Task 3
     {
-      
+      this.admiral = new BlueAdmiral(admir, 1000.0);
         
        setupShips();
        // setupEncounters();
@@ -67,7 +66,21 @@ public class SeaBattles implements BATHS
      */
     public boolean isDefeated()
     {
-        return false;
+        if (admiral.getWarChest() > 0) return false;
+        
+        HashMap<String, Ship> squadron = admiral.getSquadron();
+        if (!admiral.getSquadron().isEmpty())
+        {
+            for (String i: squadron.keySet())
+            {
+                ShipState stateOfShip = squadron.get(i).getState();
+                if (stateOfShip == ShipState.ACTIVE || stateOfShip == ShipState.RESTING)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
     
     /** returns the amount of money in the War Chest
@@ -75,7 +88,7 @@ public class SeaBattles implements BATHS
      */
     public double getWarChest()
     {
-        return 0;
+        return admiral.getWarChest();
     }
     
     
@@ -94,9 +107,21 @@ public class SeaBattles implements BATHS
      **/
     public String getSquadron()
     {
-   
+        if (!admiral.getSquadron().isEmpty())
+        {
+            StringBuilder s = new StringBuilder();
+            HashMap<String, Ship> squadron = admiral.getSquadron();
+
+            for (String i: squadron.keySet())
+            {
+                s.append(squadron.get(i).toString()).append("\n");
+                
+            }
+            return s.toString().trim();
+        }
         
-        return "No ships";
+        return "No ships commissioned";
+        
     }
     
     /**Returns a String representation of the ships sunk (or "no ships sunk yet")
