@@ -69,17 +69,15 @@ public class SeaBattles implements BATHS
         if (admiral.getWarChest() > 0) return false;
         
         HashMap<String, Ship> squadron = admiral.getSquadron();
-        if (!admiral.getSquadron().isEmpty())
+        for (String i: squadron.keySet())
         {
-            for (String i: squadron.keySet())
+            ShipState stateOfShip = squadron.get(i).getState();
+            if (stateOfShip == ShipState.ACTIVE || stateOfShip == ShipState.RESTING)
             {
-                ShipState stateOfShip = squadron.get(i).getState();
-                if (stateOfShip == ShipState.ACTIVE || stateOfShip == ShipState.RESTING)
-                {
-                    return false;
-                }
+                return false;
             }
         }
+        
         return true;
     }
     
@@ -177,6 +175,8 @@ public class SeaBattles implements BATHS
      **/
     public boolean isInSquadron(String nme)
     {
+        HashMap<String, Ship> squadron = admiral.getSquadron();
+        if (squadron.containsKey(nme)) return true;
         return false;
     }
     
