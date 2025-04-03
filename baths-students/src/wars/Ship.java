@@ -6,7 +6,8 @@ package wars;
 
 /**
  *
- * @author thomasorgan
+ * @author T.Organ
+ * @version 03/04/25
  */
 public class Ship {
     //  Fields declared
@@ -63,11 +64,11 @@ public class Ship {
     //  Return ship information
     public String toString() {
         String s = "";
-        s = s + "####SHIP####\n";
-        s = s + "Ship Name: " + name + "\n";
-        s = s + "Captain: " + captainName + "\n";
-        s = s + "Battle Skill: " + skill + "\n";
-        s = s + "Commission Fee: " + commissionFee + "\n";
+        s += "####SHIP####\n";
+        s += "Ship Name: " + name + "\n";
+        s += "Captain: " + captainName + "\n";
+        s += "Battle Skill: " + skill + "\n";
+        s += "Commission Fee: " + commissionFee + "\n";
         return s;
     }
 }

@@ -6,7 +6,8 @@ package wars;
 
 /**
  *
- * @author thomasorgan
+ * @author T.Organ
+ * @version 03/04/25
  */
 public class BackendTester {
     

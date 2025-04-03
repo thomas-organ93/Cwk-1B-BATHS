@@ -5,7 +5,7 @@ import java.io.*;
  * Enumeration class EncounterType - write a description of the enum class here
  * 
  * @author A.Marczyk
- * @version 12/02/2025
+ * @version 12/02/25
  */
 public enum EncounterType implements Serializable
 {

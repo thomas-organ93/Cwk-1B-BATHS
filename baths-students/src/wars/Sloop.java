@@ -6,7 +6,8 @@ package wars;
 
 /**
  *
- * @author thomasorgan
+ * @author T.Organ
+ * @version 03/04/25
  */
 public class Sloop extends Ship {
     //  Fields declared
@@ -27,10 +28,10 @@ public class Sloop extends Ship {
     @Override
     public String toString() {
         String s = "";
-        s = s + "####SLOOP#####\n";
-        s = s + super.toString();
-        s = s + "Has Doctor: " + hasDoctor + "\n";
-        s = s + "Ship State: " + super.toStringState() + "\n";
+        s += "####SLOOP#####\n";
+        s += super.toString();
+        s += "Has Doctor: " + hasDoctor + "\n";
+        s += "Ship State: " + super.toStringState() + "\n";
         return s;
     }
 }

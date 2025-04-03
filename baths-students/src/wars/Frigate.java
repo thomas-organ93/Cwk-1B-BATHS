@@ -6,7 +6,8 @@ package wars;
 
 /**
  *
- * @author thomasorgan
+ * @author T.Organ
+ * @version 03/04/25
  */
 public class Frigate extends Ship {
     //  Fields declared
@@ -35,11 +36,11 @@ public class Frigate extends Ship {
     @Override
     public String toString() {
         String s = "";
-        s = s + "####FRIGATE#####\n";
-        s = s + super.toString();
-        s = s + "Cannons: " + cannons + "\n";
-        s = s + "Pinnace: " + hasPinnace + "\n";
-        s = s + "Ship State: " + super.toStringState() + "\n";
+        s += "####FRIGATE#####\n";
+        s += super.toString();
+        s += "Cannons: " + cannons + "\n";
+        s += "Pinnace: " + hasPinnace + "\n";
+        s += "Ship State: " + super.toStringState() + "\n";
         return s;
     }
     
