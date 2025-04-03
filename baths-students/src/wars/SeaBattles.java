@@ -131,8 +131,12 @@ public class SeaBattles implements BATHS
      **/
     public String getSunkShips()
     {
-       
-        return "No ships";
+         if (sunkShips.isEmpty()) return "No ships";
+          String result = "";
+          for (Ship ship : sunkShips) {
+           result += ship.toString() + "\n";
+          }
+          return result.trim()
     }
     
     /**Returns a String representation of the all ships in the game
@@ -211,7 +215,7 @@ public class SeaBattles implements BATHS
      **/
      public boolean isEncounter(int num)
      {
-         return false;
+         return return encounters.containsKey(num);
      }
      
      
@@ -252,8 +256,20 @@ public class SeaBattles implements BATHS
      **/
     public String getAllEncounters()
     {
- 
-        return "No encounters";
+        if (encounters.isEmpty()) {
+         return "No encounters";
+        }
+        String result = "";
+        
+        for (Encounter enc : encounters.values()) {
+         result += enc.toString() + "\n";
+        } 
+
+        if (result.length() > 0) {
+         result = result.substring(0, result.length() -1);
+        }
+
+        return result;
     }
     
 
