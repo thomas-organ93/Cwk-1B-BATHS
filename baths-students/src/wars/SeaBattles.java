@@ -95,8 +95,12 @@ public class SeaBattles implements BATHS
      **/
     public String getReserveFleet()
     {   //assumes reserves is a Hashmap
-       
-        return "No ships";
+        if(reserveFleet.isEmpty()) return "No ships";
+        String result = "";
+        for (Ship ship : reserveFleet.values()){
+         result += ship.toString() + "\n";
+        }
+        return result.trim();
     }
     
     /**Returns a String representation of the ships in the admiral's squadron
@@ -293,7 +297,7 @@ public class SeaBattles implements BATHS
      */
     public void saveGame(String fname)
     {   // uses object serialisation 
-           
+          GameFileHandler.saveGame(this, fname); 
     }
     
     /** reads all information about the game from the specified file 
@@ -304,7 +308,7 @@ public class SeaBattles implements BATHS
     public SeaBattles loadGame(String fname)
     {   // uses object serialisation 
        
-        return null;
+        return GameFileHandler.loadGame(fname);
     } 
     
  
