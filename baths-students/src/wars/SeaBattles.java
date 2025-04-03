@@ -16,6 +16,7 @@ public class SeaBattles implements BATHS
 
     private BlueAdmiral admiral;
     private HashMap<String, Ship> reserveFleet;
+    private HashSet<Encounter> encounters;
 
 //**************** BATHS ************************** 
     /** Constructor requires the name of the admiral
@@ -25,6 +26,7 @@ public class SeaBattles implements BATHS
     {
       this.admiral = new BlueAdmiral(adm, 1000.0);
       this.reserveFleet = new HashMap<>();
+      this.encounters = new HashSet<>();
         
        setupShips();
        setupEncounters();
@@ -39,6 +41,7 @@ public class SeaBattles implements BATHS
     {
       this.admiral = new BlueAdmiral(admir, 1000.0);
       this.reserveFleet = new HashMap<>();
+      this.encounters = new HashSet<>();
         
        setupShips();
        // setupEncounters();
