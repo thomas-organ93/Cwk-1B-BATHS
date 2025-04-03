@@ -15,7 +15,7 @@ public class SeaBattles implements BATHS
     // may have one HashMap and select on stat
 
     private BlueAdmiral admiral;
-
+    private HashMap<String, Ship> reserveFleet;
 
 //**************** BATHS ************************** 
     /** Constructor requires the name of the admiral
@@ -24,6 +24,7 @@ public class SeaBattles implements BATHS
     public SeaBattles(String adm)
     {
       this.admiral = new BlueAdmiral(adm, 1000.0);
+      this.reserveFleet = new HashMap<>();
         
        setupShips();
        setupEncounters();
@@ -37,6 +38,7 @@ public class SeaBattles implements BATHS
     public SeaBattles(String admir, String filename)  //Task 3
     {
       this.admiral = new BlueAdmiral(admir, 1000.0);
+      this.reserveFleet = new HashMap<>();
         
        setupShips();
        // setupEncounters();
@@ -231,7 +233,7 @@ public class SeaBattles implements BATHS
      **/
      public boolean isEncounter(int num)
      {
-         return return encounters.containsKey(num);
+         return encounters.containsKey(num);
      }
      
      
