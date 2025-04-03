@@ -54,8 +54,18 @@ public class SeaBattles implements BATHS
      **/
     public String toString()
     {
-        
-        return "null";
+        String s = "";
+        s += "Admiral:" + admiral + "\n";
+        s += "War Chest": + (int) warChest + "\n";
+        s += "Defeated: " + (isDefeated() ? "Yes" : "Is OK") + "\n\n";
+
+        String squadronStr = getSquadron().isEmpty() ? "No ships" : getSquadron();
+        s += "Squadron: \n" + squadronStr + "\n\n";
+
+        s += "Reserve Fleet: \n" + getReserveFleet() + "\n\n";
+        s += "Sunk ships:\n" + getSunkShips();
+     
+        return s.trim();
     }
     
     
