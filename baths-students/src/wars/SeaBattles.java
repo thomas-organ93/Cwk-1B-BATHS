@@ -145,9 +145,9 @@ public class SeaBattles implements BATHS
      **/
     public String getAllShips()
     {
-  
-        
-        return "No ships";
+       return "Reserve Fleet:\n" + getReserveFleet() + "\n\n"
+        + "Squadron:\n" + getSquadron() + "\n\n"
+        + "Sunk Ships:\n" + getSunkShips();
     }
     
     
@@ -156,10 +156,16 @@ public class SeaBattles implements BATHS
      **/
     public String getShipDetails(String nme)
     {
- 
-        
-        
-        return "\nNo such ship";
+        if (!isValidShipName(nme)) {
+         return "Invalid ship name";
+        }
+        Ship ship = findShip(nme);
+
+        if (ship == null) {
+          return "\nNo such ship";
+        }
+
+        return ship.toString();
     }     
  
     // ***************** Fleet Ships ************************   
