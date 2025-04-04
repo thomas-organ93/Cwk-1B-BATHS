@@ -59,18 +59,25 @@ public class SeaBattles implements BATHS
      **/
     public String toString()
     {
-        String s = "";
-        s += "Admiral:" + admiral + "\n";
-        s += "War Chest:" + (int) admiral.warChest + "\n";
-        s += "Defeated: " + (isDefeated() ? "Yes" : "Is OK") + "\n\n";
+        StringBuilder s = new StringBuilder();
+        s.append("Admiral: ").append(admiral).append("\n");
+        s.append("War Chest: ").append((int) admiral.getWarChest()).append("\n");
+        s.append("Defeated: ").append(isDefeated() ? "Yes" : "No").append("\n\n");
+        s.append("Squadron: ");
 
-        String squadronStr = getSquadron().isEmpty() ? "No ships" : getSquadron();
-        s += "Squadron: \n" + squadronStr + "\n\n";
+        HashMap<String, Ship> squadron = admiral.getSquadron();
+        if (squadron.isEmpty()) {
+            s.append("No ships\n");
+        } else {
+            for (Ship ship : squadron.values()) {
+                s.append(ship.toString()).append("\n");
+            }
+        }
 
-        s += "Reserve Fleet: \n" + getReserveFleet() + "\n\n";
-        s += "Sunk ships:\n" + getSunkShips();
-     
-        return s.trim();
+        s.append("\nReserve Fleet: ").append(getReserveFleet()).append("\n\n");
+        s.append("Sunk ships:\n").append(getSunkShips());
+
+        return s.toString().trim();
     }
     
     
@@ -110,16 +117,20 @@ public class SeaBattles implements BATHS
      **/
     public String getReserveFleet()
     {   //assumes reserves is a Hashmap
-       String s = "";
-       s += "All Reserve Ships:\n";
-       if (reserveFleet.isEmpty()) {
-           s += "[No Ships Available]\n"; // For testing. Should be impossible.
-       } else {
-           for (Ship ship : reserveFleet.values()) {
-               s += ship.toString();
-           }
-       }
-       return s;
+        if (!admiral.getSquadron().isEmpty())
+        {
+            StringBuilder s = new StringBuilder();
+            HashMap<String, Ship> squadron = admiral.getSquadron();
+
+            for (String i: squadron.keySet())
+            {
+                s.append(squadron.get(i).toString()).append("\n");
+
+            }
+            return s.toString().trim();
+        }
+
+        return "No ships commissioned";
     }
     
     /**Returns a String representation of the ships in the admiral's squadron
@@ -150,12 +161,20 @@ public class SeaBattles implements BATHS
      **/
     public String getSunkShips()
     {
-         if (sunkShips.isEmpty()) return "No ships";
-          String result = "";
-          for (Ship ship : sunkShips) {
-           result += ship.toString() + "\n";
-          }
-          return result.trim()
+        StringBuilder result = new StringBuilder();
+        HashMap<String, Ship> squadron = admiral.getSquadron();
+
+        for (Ship ship : squadron.values()) {
+            if (ship.getState() == ShipState.SUNK) {
+                result.append(ship.toString()).append("\n");
+            }
+        }
+
+        if (result.length() > 0) {
+            return result.toString().trim();
+        } else {
+            return "no ships sunk yet";
+        }
     }
     
     /**Returns a String representation of the all ships in the game
@@ -184,18 +203,16 @@ public class SeaBattles implements BATHS
      **/
     public String getShipDetails(String nme)
     {
-        if (!isValidShipName(nme)) {
-         return "Invalid ship name";
-        }
-        Ship ship = findShip(nme);
+        HashMap<String, Ship> squadron = admiral.getSquadron();
 
-        if (ship == null) {
-          return "\nNo such ship";
+        if (squadron.containsKey(nme)) {
+            Ship ship = squadron.get(nme);
+            return ship.toString();
+        }   else {
+            return "No such ship";
         }
+    }
 
-        return ship.toString();
-    }     
- 
     // ***************** Fleet Ships ************************   
     /** Allows a ship to be comissioned to the admiral's squadron, if there 
      * is enough money in the War Chest for the commission fee.The ship's 
@@ -249,10 +266,16 @@ public class SeaBattles implements BATHS
      **/
      public boolean isEncounter(int num)
      {
-         return encounters.containsKey(num);
+         for (Encounter encounter : encounters) {
+             if (encounter.viewId() == num) {
+                 return true;
+             }
+         }
+         return false;
      }
-     
-     
+
+
+
     /** Retrieves the encounter represented by the encounter 
       * number.Finds a ship from the fleet which can fight the 
       * encounter. The results of fighting an encounter will be 
