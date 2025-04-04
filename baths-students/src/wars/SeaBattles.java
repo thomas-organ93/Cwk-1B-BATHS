@@ -339,12 +339,55 @@ public class SeaBattles implements BATHS
     //*******************************************************************************
      private void setupShips()
      {
-       
+       ManOWar victory = new ManOWar("Victory", "Alan Aikan", 3, 3, 30, ShipState.RESERVE);
+        Frigate sophie = new Frigate("Sophie", "Ben Baggins", 8, 16, true, ShipState.RESERVE);
+        ManOWar endeavour = new ManOWar("Endeavour", "Col Cannon", 4, 2, 20, ShipState.RESERVE);
+        Sloop arrow = new Sloop("Arrow", "Dan Dare", 150, true, ShipState.RESERVE);
+        ManOWar belerophon = new ManOWar("Belerophon", "Ed Evans", 8, 3, 50, ShipState.RESERVE);
+        Frigate surprise = new Frigate("Surprise", "Fred Fox", 6, 10, false, ShipState.RESERVE);
+        Frigate jupiter = new Frigate("Jupiter", "Gil Gamage", 7, 20, false, ShipState.RESERVE);
+        Sloop paris = new Sloop("Paris", "Hal Henry", 200, true, ShipState.RESERVE);
+        Sloop beast = new Sloop("Beast", "Ian Idle", 400, false, ShipState.RESERVE);
+        Sloop athena= new Sloop("Athena", "John Jones", 100, true, ShipState.RESERVE);
+        
+        //Add each ship to the reserveFleet Hashmap using its name as the key
+        
+        reserveFleet.put("Victory", victory);
+        reserveFleet.put("Sophie", sophie);
+        reserveFleet.put("Endeavour", endeavour);
+        reserveFleet.put("Arrow", arrow);
+        reserveFleet.put("Belerophon", belerophon);
+        reserveFleet.put("Surprise", surprise);
+        reserveFleet.put("Jupiter", jupiter);
+        reserveFleet.put("Paris", paris);
+        reserveFleet.put("Beast", beast);
+        reserveFleet.put("Athena", athena);
 
      }
      
     private void setupEncounters()
     {
+        Encounter trafalgar = new Encounter(1, EncounterType.BATTLE, "Trafalgar", 3, 300);
+        Encounter belleIsle = new Encounter(2, EncounterType.SKIRMISH,"belleIsle", 3, 120);
+        Encounter brest = new Encounter(3, EncounterType.BLOCKADE, "brest", 3, 150);
+        Encounter stMalo = new Encounter(4, EncounterType.BATTLE, "stMalo", 9, 200);
+        Encounter dieppe = new Encounter(5, EncounterType.BLOCKADE, "dieppe", 7, 90);
+        Encounter jersey = new Encounter(6, EncounterType.SKIRMISH, "jersey", 8, 45);
+        Encounter nantes = new Encounter(7, EncounterType.BLOCKADE, "nantes", 6, 130);
+        Encounter finisterre = new Encounter(8, EncounterType.BATTLE, "finisterre", 4, 100);
+        Encounter biscay = new Encounter(9, EncounterType.SKIRMISH, "biscay", 5, 200);
+        Encounter cadiz = new Encounter(10, EncounterType.BATTLE, "cadiz", 1, 250);
+        
+        encounters.add(trafalgar);
+        encounters.add(belleIsle);
+        encounters.add(brest);
+        encounters.add(stMalo);
+        encounters.add(dieppe);
+        encounters.add(jersey);
+        encounters.add(nantes);
+        encounters.add(finisterre);
+        encounters.add(biscay);
+        encounters.add(cadiz);
   
     }
         

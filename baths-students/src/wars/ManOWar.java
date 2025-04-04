@@ -21,7 +21,7 @@ public class ManOWar extends Ship {
         this.marines = m;
         
         if (deck <= 2) {
-            super.setCommissionFee(200); // Set commission to 200
+            super.setCommissionFee(300); // Set commission to 300
         }
     }
     
