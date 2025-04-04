@@ -357,24 +357,47 @@ public class SeaBattles implements BATHS
 
     
     //******************************** Task 3.5 **********************************
-    /** reads data about encounters from a text file and stores in collection of 
-     * encounters.Data in the file is editable
+    /** 
+     * Reads data about encounters from a text file and stores them in the
+     * encounters HashSet collection.
+     * Each line should be formatted as:
+     * id,type,location,skill,prize (e.g., "1,BATTLE,Trafalgar,3,300").
+     * The type must be one of: BATTLE, SKIRMISH, BLOCKADE.
      * @param fileName name of the file to be read
      */
-    public void readEncounters(String filename)
-{
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            // Assuming each line in the file represents an encounter
-            // and the line format is compatible with the Encounter constructor.
-            Encounter encounter = new Encounter(line);
-            encounters.add(encounter);
+    public void readEncounters(String fileName)
+    {
+        try {
+            BufferedReader reader = new BufferedReader(
+                new FileReader(fileName));
+            String line = reader.readLine();
+            while(line != null) {
+                if (!line.trim().isEmpty()) {
+                    String[] fields = line.split(",");
+                    
+                    int id = Integer.parseInt(fields[0].trim());
+                    EncounterType type = EncounterType.valueOf(fields[1].trim().toUpperCase());
+                    String location = fields[2].trim();
+                    int skill = Integer.parseInt(fields[3].trim());
+                    int prize = Integer.parseInt(fields[4].trim());
+                    
+                    Encounter encounter = new Encounter(id, type, location, skill, prize);
+                    encounters.add(encounter);
+                }
+                line = reader.readLine();
+            }
+            reader.close();
+            System.out.println("Loaded " + encounters.size() + " encounters from " + fileName);
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+        catch(FileNotFoundException e) {
+            System.out.println("Couldn't find file " + fileName + " : " + e.getMessage());
+        }
+        catch(IOException e) {
+            System.out.println("Error while reading or closing the file " + fileName + " : " + e.getMessage());
+        }
+
+        
     }
-}
  
     
     // ***************   file write/read  *********************
