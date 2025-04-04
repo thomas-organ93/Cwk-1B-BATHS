@@ -321,22 +321,19 @@ public class SeaBattles implements BATHS
      **/
     public String getAllEncounters()
     {
-        if (encounters.isEmpty()) {
-         return "No encounters";
+        if (encounters.isEmpty()){
+            return "No encounters";
         }
-        String result = "";
         
-        for (Encounter enc : encounters.values()) {
-         result += enc.toString() + "\n";
-        } 
-
-        if (result.length() > 0) {
-         result = result.substring(0, result.length() -1);
+        StringBuilder result = new StringBuilder();
+        
+        for (Encounter enc : encounters) {
+            result.append(enc.toString()).append("\n");
         }
 
-        return result;
+        return result.toString().trim();
     }
-    
+
 
     //****************** private methods for Task 4 functionality*******************
     //*******************************************************************************
