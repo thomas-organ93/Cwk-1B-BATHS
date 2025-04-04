@@ -231,7 +231,7 @@ public class SeaBattles implements BATHS
         } else {
             ship.setState(ShipState.ACTIVE);
             admiral.getSquadron().put(nme, ship);
-            admiral.changeWarChestAmount(admiral.getWarChest() - ship.getCommissionFee());
+            admiral.changeWarChestAmount(-ship.getCommissionFee());
             return "Ship commissioned";
         }
     }
@@ -299,9 +299,81 @@ public class SeaBattles implements BATHS
       */ 
     public String fightEncounter(int encNo)
     {
-       
-            
-        return "Not done";
+        if (isEncounter(encNo)) return "No such encounter";
+        
+        // get encounter
+        Encounter encounter = null;
+        for (Encounter e : encounters)
+        {
+            if (e.viewId() == encNo)
+            {
+                encounter = e;
+                break;
+            }
+        }
+        
+        // get encounter type & prize
+        EncounterType encType = encounter.getType();
+        int prizeMoney = encounter.viewPrize();
+        
+        // get eligible ship
+        Ship eliShip = null;
+        for (Ship ship : admiral.getSquadron().values())
+        {
+            // BATTLE > choose any ACTIVE
+            if (encType == EncounterType.BATTLE && ship.getState() == ShipState.ACTIVE)
+            {
+                eliShip = ship;
+                break;
+            }
+            // BLOCKADE > choose any ACTIVE ManOWar or Frigate with pinnacle
+            else if (encType == EncounterType.BLOCKADE && ship.getState() == ShipState.ACTIVE
+                && (ship instanceof ManOWar
+                || (ship instanceof Frigate && ((Frigate) ship).checkPinnace())))
+            {
+                eliShip = ship;
+                break;
+            }
+            // SKIRMISH > choose any ACTIVE Frigate or Sloop
+            else if (encType == EncounterType.SKIRMISH && ship.getState() == ShipState.ACTIVE
+                    && (ship instanceof Frigate || ship instanceof Sloop))
+            {
+                eliShip = ship;
+                break;
+            }
+        }
+        
+        // battle outcomes:
+        // no eligible ship, encounter is lost
+        if (eliShip == null)
+        {
+            admiral.changeWarChestAmount(-encounter.viewPrize());
+            if (isDefeated())
+            {
+                return "Encounter is lost and you lose your job" ;
+            }
+            return "Encounter lost as no suitable ship available";
+        }
+        
+        // fight encounter
+        if (eliShip.getSkill() >= encounter.viewSkill())
+        {
+            // win + prize money
+            admiral.changeWarChestAmount(prizeMoney);
+            eliShip.setState(ShipState.RESTING);
+            return "Encounter won by " + eliShip.viewName();
+        }
+        else
+        {
+            // lose - prize money
+            admiral.changeWarChestAmount(-prizeMoney);
+            eliShip.setState(ShipState.SUNK);
+            if (isDefeated())
+            {
+                return "Encounter is lost and you lose your job" ;
+            }
+            return "Encounter lost on skill level";
+        }
     }
 
     /** Provides a String representation of an encounter given by 
@@ -367,33 +439,43 @@ public class SeaBattles implements BATHS
      */
     public void readEncounters(String fileName)
     {
-        try {
+        try
+        {
             BufferedReader reader = new BufferedReader(
                 new FileReader(fileName));
             String line = reader.readLine();
-            while(line != null) {
-                if (!line.trim().isEmpty()) {
+            while(line != null)
+            {
+                if (!line.trim().isEmpty())
+                {
                     String[] fields = line.split(",");
                     
                     int id = Integer.parseInt(fields[0].trim());
-                    EncounterType type = EncounterType.valueOf(fields[1].trim().toUpperCase());
+                    EncounterType type = EncounterType.valueOf(
+                            fields[1].trim().toUpperCase());
                     String location = fields[2].trim();
                     int skill = Integer.parseInt(fields[3].trim());
                     int prize = Integer.parseInt(fields[4].trim());
                     
-                    Encounter encounter = new Encounter(id, type, location, skill, prize);
+                    Encounter encounter = new Encounter(id, type, location, 
+                            skill, prize);
                     encounters.add(encounter);
                 }
                 line = reader.readLine();
             }
             reader.close();
-            System.out.println("Loaded " + encounters.size() + " encounters from " + fileName);
+            System.out.println("Loaded " + encounters.size() + " encounters from "
+                    + fileName);
         }
-        catch(FileNotFoundException e) {
-            System.out.println("Couldn't find file " + fileName + " : " + e.getMessage());
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Couldn't find file " + fileName + " : "
+                    + e.getMessage());
         }
-        catch(IOException e) {
-            System.out.println("Error while reading or closing the file " + fileName + " : " + e.getMessage());
+        catch(IOException e)
+        {
+            System.out.println("Error while reading or closing the file "
+                    + fileName + " : " + e.getMessage());
         }
 
         
