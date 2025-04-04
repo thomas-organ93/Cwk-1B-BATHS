@@ -4,7 +4,7 @@ package wars;
 /**
  * Details of your team
  * 
- * @author (your name) 
+ * @author (Jordan Anyanwu) 
  * @version (a version number or a date)
  */
 public class Teamwork
@@ -17,24 +17,24 @@ public class Teamwork
         // Please list the member details alphabetically by surname 
         // i.e. the surname of member1 should come alphabetically 
         // before the surname of member 2...etc
-        details[0] = "team number";
+        details[0] = "CWK1B CS56";
         
-        details[1] = "surname of member1";
-        details[2] = "first name of member1";
-        details[3] = "SRN of member1";
+        details[1] = "Organ";
+        details[2] = "Thomas";
+        details[3] = "22017656";
 
-        details[4] = "surname of member2";
-        details[5] = "first name of member2";
-        details[6] = "SRN of member2";
+        details[4] = "Ali";
+        details[5] = "Awab";
+        details[6] = "20049220";
 
-        details[7] = "surname of member3";
-        details[8] = "first name of member3";
-        details[9] = "SRN of member3";
+        details[7] = "McEvoy";
+        details[8] = "Nathan";
+        details[9] = "20052541";
 
 
-        details[10] = "surname of member4";
-        details[11] = "first name of member4";
-        details[12] = "SRN of member4";
+        details[10] = "Anyanwu";
+        details[11] = "Jordan";
+        details[12] = "21037141";
 
 	
 	   // only if applicable
