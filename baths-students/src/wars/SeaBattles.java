@@ -369,11 +369,19 @@ public class SeaBattles implements BATHS
      * @param fileName name of the file to be read
      */
     public void readEncounters(String filename)
-    { 
-      
-        
-        
-    }   
+{
+    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            // Assuming each line in the file represents an encounter
+            // and the line format is compatible with the Encounter constructor.
+            Encounter encounter = new Encounter(line);
+            encounters.add(encounter);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
  
     
     // ***************   file write/read  *********************
