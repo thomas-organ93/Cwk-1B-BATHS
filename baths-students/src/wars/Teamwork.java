@@ -4,7 +4,7 @@ package wars;
 /**
  * Details of your team
  * 
- * @author (Jordan Anyanwu) 
+ * @author Jordan Anyanwu 
  * @version (a version number or a date)
  */
 public class Teamwork
