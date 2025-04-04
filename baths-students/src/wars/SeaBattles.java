@@ -406,7 +406,7 @@ public class SeaBattles implements BATHS
      */
     public void saveGame(String fname)
     {   // uses object serialisation 
-          GameFileHandler.saveGame(this, fname); 
+          //GameFileHandler.saveGame(this, fname); 
     }
     
     /** reads all information about the game from the specified file 
@@ -417,7 +417,7 @@ public class SeaBattles implements BATHS
     public SeaBattles loadGame(String fname)
     {   // uses object serialisation 
        
-        return GameFileHandler.loadGame(fname);
+        return null;//GameFileHandler.loadGame(fname);
     } 
     
  
