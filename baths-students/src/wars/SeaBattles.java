@@ -117,20 +117,16 @@ public class SeaBattles implements BATHS
      **/
     public String getReserveFleet()
     {   //assumes reserves is a Hashmap
-        if (!admiral.getSquadron().isEmpty())
-        {
-            StringBuilder s = new StringBuilder();
-            HashMap<String, Ship> squadron = admiral.getSquadron();
-
-            for (String i: squadron.keySet())
-            {
-                s.append(squadron.get(i).toString()).append("\n");
-
+        String s = "";
+        s += "All Reserve Ships:\n";
+        if (reserveFleet.isEmpty()) {
+            s += "[No Ships Available]\n"; // For testing. Should be impossible.
+        } else {
+            for (Ship ship : reserveFleet.values()) {
+                s += ship.toString();
             }
-            return s.toString().trim();
         }
-
-        return "No ships commissioned";
+        return s;
     }
     
     /**Returns a String representation of the ships in the admiral's squadron
