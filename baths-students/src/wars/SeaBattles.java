@@ -229,9 +229,9 @@ public class SeaBattles implements BATHS
         } else if (admiral.getWarChest() < ship.getCommissionFee()) {
             return "Not enough money";
         } else {
-            Shipstate.setState(" ACTIVE ");
+            ship.setState(ShipState.ACTIVE);
             admiral.getSquadron().put(nme, ship);
-            admiral.setWarChest(admiral.getWarChest() - ship.getCommissionFee());
+            admiral.changeWarChestAmount(admiral.getWarChest() - ship.getCommissionFee());
             return "Ship commissioned";
         }
     }
