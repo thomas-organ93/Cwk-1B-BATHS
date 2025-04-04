@@ -6,7 +6,7 @@ import java.io.*;
  * This class implements the behaviour expected from the BATHS
  system as required for 5COM2007 Cwk1B BATHS - Feb 2025
  * 
- * @author A.A.Marczyk, Nathan-McEvoy
+ * @author A.A.Marczyk, Nathan-McEvoy, Jordan Anyanwu
  * @version 02/04/25
  */
 
