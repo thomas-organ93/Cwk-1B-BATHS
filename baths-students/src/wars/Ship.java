@@ -46,6 +46,11 @@ public class Ship {
         commissionFee = fee;
     }
     
+    // Get ship skill
+    public int getSkill() {
+        return skill;
+    }
+    
     //  Return ship state
     public ShipState getState() {
         return state;
