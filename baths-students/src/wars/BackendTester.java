@@ -14,6 +14,7 @@ public class BackendTester {
     public static void main(String[] args) {
         
         // Create Ships
+        
         ManOWar victory = new ManOWar("Victory", "Alan Aikan", 3, 3, 20, ShipState.RESERVE);
         Frigate sophie = new Frigate("Sophie", "Ben Baggins", 8, 16, true, ShipState.RESERVE);
         Sloop arrow = new Sloop("Arrow", "Dan Dare", 150, true, ShipState.RESERVE);
