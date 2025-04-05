@@ -200,7 +200,7 @@ public class SeaBattles implements BATHS
     {
         HashMap<String, Ship> squadron = admiral.getSquadron();
         
-         if (reserveFleet.containsKey(nme)) { // Check reserve fleet
+        if (reserveFleet.containsKey(nme)) { // Check reserve fleet
             Ship ship = reserveFleet.get(nme);
             return ship.toString();
         }   
@@ -378,9 +378,9 @@ public class SeaBattles implements BATHS
             admiral.changeWarChestAmount(-encounter.viewPrize());
             if (isDefeated())
             {
-                return "You are defeated: Encounter is lost and you lose your job" ;
+                return "You are defeated: Encounter is lost and you lose your job\n" ;
             }
-            return "Retreat: There's no ship available";
+            return "Retreat: There's no ship available\n";
         }
         
         // fight encounter
@@ -389,7 +389,7 @@ public class SeaBattles implements BATHS
             // win + prize money
             admiral.changeWarChestAmount(prizeMoney);
             eliShip.setState(ShipState.RESTING);
-            return "Victory: Encounter won by " + eliShip.viewName();
+            return "Victory: Encounter won by " + eliShip.viewName() + "\n";
         }
         else
         {
@@ -398,9 +398,9 @@ public class SeaBattles implements BATHS
             eliShip.setState(ShipState.SUNK);
             if (isDefeated())
             {
-                return "You are defeated: Encounter is lost and you lose your job" ;
+                return "You are defeated: Encounter is lost and you lose your job\n" ;
             }
-            return "You are defeated: Encounter lost on battle skill";
+            return "You are defeated: Encounter lost on battle skill\n";
         }
     }
 
@@ -412,8 +412,15 @@ public class SeaBattles implements BATHS
      **/
     public String getEncounter(int num)
     {
-        
-        return "\nNo such encounter";
+        if (!encounters.isEmpty()){
+            for (Encounter encounter : encounters) {
+                if (encounter.viewId() == num) {
+                    return encounter.toString();
+                }
+            }
+        }
+        return "No encounters";
+//      
     }
     
     /** Provides a String representation of all encounters 

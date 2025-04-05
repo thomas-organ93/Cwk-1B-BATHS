@@ -22,9 +22,10 @@ public class MyTester {
         john.commissionShip("Victory");
         john.commissionShip("Beast");
 //        System.out.println(john.getShipDetails("Sophie"));
-//        System.out.println(john.toString());
+        System.out.println(john.toString());
         john.fightEncounter(7);
         System.out.println(john.fightEncounter(7));
+        System.out.println(john.getEncounter(2));
 
        
 
