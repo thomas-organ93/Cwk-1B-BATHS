@@ -42,8 +42,9 @@ public class T5FightEncounterTest {
     }
 
     // TODO add test methods here.
+    // See bottom for Sloop tests
     // The methods must be annotated with annotation @Test. For example:
-    //
+    
     
 //ManOWar facing Encounters
     @Test
@@ -222,7 +223,7 @@ public class T5FightEncounterTest {
 
         double expected = 380;
         game.commissionShip("Belerophon"); //warchest= 500
-        game.fightEncounter(2); //can't do, lose 180
+        game.fightEncounter(2); //can't do, lose 120
         double actual = game.getWarChest();
         assertEquals(expected, actual,0.5);
     }
@@ -322,8 +323,133 @@ public class T5FightEncounterTest {
  
 //    //Sloop - write your own tests
 //    
-  
+    /**
+     * doctor has no bearing on combat score
+     * sloop combat score is 5
+     * 
+     * blockade
+     * cant fight loses
+     * cant fight loses money
+     * 
+     * battle
+     * wins
+     * wins money
+     * loses 
+     * loses money
+     * 
+     * skirmish
+     * wins 
+     * wins money
+     * loses 
+     * loses money
+     * 
+     * no such encounter
+     * 
+     */
+    // Fight encounter Blockade - incorrect ship type
+    @Test
+    public void SloopFacingBlockadeCantWin()
+    {
+        game.commissionShip("Arrow");
+        String actual = game.fightEncounter(3); //can't do
+        assertTrue(actual.contains("no ship available"));
+    }
     
+    @Test
+    public void SloopFacingBlockadeCantWinLosesMoney()
+    {
+        double expected = 1000 - 150 - 150;
+        game.commissionShip("Arrow"); //warchest= 850
+        game.getWarChest();
+        game.fightEncounter(3); //can't do, lose 150
+        game.getWarChest();
+        double actual = game.getWarChest();
+        assertEquals(expected, actual,0.5);
+    }
     
+    // Fight encounter Battle
+    @Test
+    public void SloopFacingBattleWins()
+    {
+        game.commissionShip("Paris");
+        String actual = game.fightEncounter(1); // wins
+        assertTrue(actual.contains("won"));
+    }
+    
+    @Test
+    public void SloopFacingBattleWinsMoneyAdded()
+    {
+        double expected = 1000 - 200 + 300;
+        game.commissionShip("Paris"); //warchest= 800
+        game.fightEncounter(1); // wins
+        double actual = game.getWarChest(); //warChest= 1100
+        assertEquals(expected, actual,0.5);
+    }
+    
+    @Test
+    public void SloopFacingBattleLoses()
+    {
+        game.commissionShip("Paris");
+        String actual = game.fightEncounter(4); // loses
+        assertTrue(actual.contains("lost"));
+    }
+    
+    @Test
+    public void SloopFacingBattleLosesMoneyRemoved()
+    {
+        double expected = 1000 - 200 - 200;
+        game.commissionShip("Paris"); //warchest= 800
+        game.fightEncounter(4); // loses
+        double actual = game.getWarChest(); //warChest= 500
+        assertEquals(expected, actual,0.5);
+    }
+    
+    // Fight encounter Skirmish
+    @Test
+    public void SloopFacingSkirmishWins()
+    {
+        game.commissionShip("Athena");
+        String actual = game.fightEncounter(9); // wins
+        assertTrue(actual.contains("won"));
+    }
+    
+    @Test
+    public void SloopFacingSkirmishWinsMoneyAdded()
+    {
+        double expected = 1000 - 100 + 200;
+        game.commissionShip("Athena"); //warchest= 900
+        game.fightEncounter(9); // wins
+        double actual = game.getWarChest(); //warChest = 1100
+        assertEquals(expected, actual,0.5);
+    }
+    
+    @Test
+    public void SloopFacingSkirmishLoses()
+    {
+        game.commissionShip("Athena");
+        String actual = game.fightEncounter(6); // loses
+        assertTrue(actual.contains("lost"));
+    }
+    
+    @Test
+    public void SloopFacingSkirmishLosesMoneyRemoved()
+    {
+        double expected = 1000 - 100 - 45;
+        game.commissionShip("Athena"); //warchest= 900
+        game.fightEncounter(6); // loses
+        double actual = game.getWarChest(); //warChest = 855
+        assertEquals(expected, actual,0.5);
+    }
+    
+    // No such encounter - no money lost
+    @Test
+    public void SloopFacingInvalidEncounter()
+    {
+        double expected = 1000 - 400;
+        game.commissionShip("Beast");
+        double amount = game.getWarChest(); //warChest= 600
+        String actual = game.fightEncounter(20); // no such encounter
+        assertEquals(expected, amount,0.5);
+    }
 
 }
