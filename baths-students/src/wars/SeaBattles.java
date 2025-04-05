@@ -168,7 +168,7 @@ public class SeaBattles implements BATHS
         if (result.length() > 0) {
             return result.toString().trim();
         } else {
-            return "[No Ships Sunk Yet]";
+            return "[No Ships Sunk Yet]\n\n";
         }
     }
     
@@ -378,9 +378,9 @@ public class SeaBattles implements BATHS
             admiral.changeWarChestAmount(-encounter.viewPrize());
             if (isDefeated())
             {
-                return "Encounter is lost and you lose your job" ;
+                return "You are defeated: Encounter is lost and you lose your job" ;
             }
-            return "no ship available";
+            return "Retreat: There's no ship available";
         }
         
         // fight encounter
@@ -398,9 +398,9 @@ public class SeaBattles implements BATHS
             eliShip.setState(ShipState.SUNK);
             if (isDefeated())
             {
-                return "Encounter is lost and you lose your job" ;
+                return "You are defeated: Encounter is lost and you lose your job" ;
             }
-            return "lost on battle skill";
+            return "You are defeated: Lost on battle skill";
         }
     }
 
