@@ -245,8 +245,13 @@ public class SeaBattles implements BATHS
      **/
     public boolean isInSquadron(String nme)
     {
-        HashMap<String, Ship> squadron = admiral.getSquadron();
-        if (squadron.containsKey(nme)) return true;
+        for (Ship ship : admiral.getSquadron().values())
+        {
+            if (ship.viewName() == nme && ship.getState() == ShipState.ACTIVE)
+            {
+                return true;
+            }
+        }   
         return false;
     }
     
@@ -375,7 +380,7 @@ public class SeaBattles implements BATHS
             {
                 return "Encounter is lost and you lose your job" ;
             }
-            return "Encounter lost on skill level";
+            return "lost on battle skill";
         }
     }
 
