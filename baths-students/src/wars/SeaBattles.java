@@ -60,21 +60,20 @@ public class SeaBattles implements BATHS
     public String toString()
     {
         StringBuilder s = new StringBuilder();
-        s.append("Admiral: ").append(admiral).append("\n");
-        s.append("War Chest: ").append((int) admiral.getWarChest()).append("\n");
-        s.append("Defeated: ").append(isDefeated() ? "You lost your job" : "Is OK").append("\n\n");
-        s.append("Squadron: ");
+        s.append(admiral).append("\n");
+        s.append("Defeated: ").append(isDefeated() ? "Yes" : "No").append("\n\n");
 
         HashMap<String, Ship> squadron = admiral.getSquadron();
+        s.append("All Owned Ships:\n");
         if (squadron.isEmpty()) {
-            s.append("No ships\n");
+            s.append("[No ships]\n\n");
         } else {
             for (Ship ship : squadron.values()) {
                 s.append(ship.toString()).append("\n");
             }
         }
 
-        s.append("\nReserve Fleet: ").append(getReserveFleet()).append("\n\n");
+        s.append(getReserveFleet()).append("\n\n");
         s.append("Sunk ships:\n").append(getSunkShips());
 
         return s.toString().trim();
@@ -123,7 +122,7 @@ public class SeaBattles implements BATHS
             s += "[No Ships Available]\n"; // For testing. Should be impossible.
         } else {
             for (Ship ship : reserveFleet.values()) {
-                s += ship.toString();
+                s += ship.toString() + "\n";
             }
         }
         return s;

@@ -111,7 +111,7 @@ public class BlueAdmiral implements Serializable
                 + "Name: " + name + "\n"
                 + "War Chest: " + warChest + "\n"
                 + "Status: " + (!hasDecommissionableShips() && warChest <= 0 ? "You lost your job" : "Is OK") + "\n"
-                + "Squadron: " + (squadron.isEmpty() ? "[No Ships]" : ships) + "\n";
+                + "Squadron: " + (squadron.isEmpty() ? "[No Ships]" : ships);
     }
     
 }
