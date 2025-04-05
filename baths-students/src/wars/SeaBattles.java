@@ -73,8 +73,8 @@ public class SeaBattles implements BATHS
             }
         }
 
-        s.append(getReserveFleet()).append("\n\n");
-        s.append("Sunk ships:\n").append(getSunkShips());
+        s.append(getReserveFleet()).append("\n");
+        s.append("Sunk Ships:\n").append(getSunkShips());
 
         return s.toString().trim();
     }
@@ -168,7 +168,7 @@ public class SeaBattles implements BATHS
         if (result.length() > 0) {
             return result.toString().trim();
         } else {
-            return "no ships sunk yet";
+            return "[No Ships Sunk Yet]";
         }
     }
     
