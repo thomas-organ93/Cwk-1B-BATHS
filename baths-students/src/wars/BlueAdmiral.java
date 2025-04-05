@@ -84,6 +84,17 @@ public class BlueAdmiral
         }
     }
     
+    public boolean hasDecommissionableShips() {
+        if (!squadron.isEmpty()) {
+            for (Ship ship : squadron.values()) {
+                if (ship.getState() != ShipState.SUNK) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     /**
      * returns a string containing the Admiral's name, warChest and squadron
      * @return a string containing the Admiral's name, warChest and squadron
@@ -94,7 +105,7 @@ public class BlueAdmiral
         return "####ADMIRAL####\n" 
                 + "Name: " + name + "\n"
                 + "War Chest: " + warChest + "\n"
-                + "Status: " + (squadron.isEmpty() && warChest <= 0 ? "You lost your job" : "Is OK") + "\n"
+                + "Status: " + (!hasDecommissionableShips() && warChest <= 0 ? "You lost your job" : "Is OK") + "\n"
                 + "Squadron: " + (squadron.isEmpty() ? "[No Ships]" : ships) + "\n";
     }
     
