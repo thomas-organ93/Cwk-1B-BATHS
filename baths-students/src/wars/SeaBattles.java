@@ -200,13 +200,16 @@ public class SeaBattles implements BATHS
     public String getShipDetails(String nme)
     {
         HashMap<String, Ship> squadron = admiral.getSquadron();
-
-        if (squadron.containsKey(nme)) {
+        
+         if (reserveFleet.containsKey(nme)) { // Check reserve fleet
+            Ship ship = reserveFleet.get(nme);
+            return ship.toString();
+        }   
+         else if (squadron.containsKey(nme)) { // Check squadron
             Ship ship = squadron.get(nme);
             return ship.toString();
-        }   else {
-            return "No such ship";
-        }
+        }   
+        return "No such ship";
     }
 
     // ***************** Fleet Ships ************************   
