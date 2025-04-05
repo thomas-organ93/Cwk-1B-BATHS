@@ -5,6 +5,7 @@
 
 package wars;
 
+import java.io.*;
 import java.util.HashMap;
 
 /**
@@ -12,7 +13,7 @@ import java.util.HashMap;
  * @author Nathan-McEvoy
  * @version 02/04/25
  */
-public class BlueAdmiral
+public class BlueAdmiral implements Serializable
 {
     private double warChest;
     private String name;

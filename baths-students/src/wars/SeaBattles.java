@@ -7,10 +7,10 @@ import java.io.*;
  system as required for 5COM2007 Cwk1B BATHS - Feb 2025
  * 
  * @author A.A.Marczyk, Nathan-McEvoy, Jordan Anyanwu
- * @version 02/04/25
+ * @version 05/04/25
  */
 
-public class SeaBattles implements BATHS 
+public class SeaBattles implements BATHS
 {
     // may have one HashMap and select on stat
 

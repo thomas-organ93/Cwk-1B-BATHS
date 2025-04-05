@@ -4,12 +4,14 @@
  */
 package wars;
 
+import java.io.*;
+
 /**
  *
  * @author T.Organ
  * @version 03/04/25
  */
-public class Encounter {
+public class Encounter implements Serializable{
     //  Fields declared
     private int id;
     private EncounterType type;

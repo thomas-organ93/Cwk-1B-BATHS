@@ -4,12 +4,14 @@
  */
 package wars;
 
+import java.io.*;
+
 /**
  *
  * @author T.Organ
  * @version 03/04/25
  */
-public class Ship {
+public class Ship implements Serializable{
     //  Fields declared
     private String name;
     private String captainName;
