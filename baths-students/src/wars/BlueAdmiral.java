@@ -84,6 +84,10 @@ public class BlueAdmiral
         }
     }
     
+    /**
+     * returns Boolean on the condition of unsunk ships.
+     * @return if have decommissionable ships as Boolean
+     */
     public boolean hasDecommissionableShips() {
         if (!squadron.isEmpty()) {
             for (Ship ship : squadron.values()) {
@@ -96,8 +100,8 @@ public class BlueAdmiral
     }
     
     /**
-     * returns a string containing the Admiral's name, warChest and squadron
-     * @return a string containing the Admiral's name, warChest and squadron
+     * returns a string containing the Admiral's name, warChest, status and squadron
+     * @return a string containing the Admiral's name, warChest, status and squadron
      */
     public String toString()
     {

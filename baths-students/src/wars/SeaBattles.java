@@ -443,15 +443,15 @@ public class SeaBattles implements BATHS
     private void setupEncounters()
     {
         Encounter trafalgar = new Encounter(1, EncounterType.BATTLE, "Trafalgar", 3, 300);
-        Encounter belleIsle = new Encounter(2, EncounterType.SKIRMISH,"belleIsle", 3, 120);
-        Encounter brest = new Encounter(3, EncounterType.BLOCKADE, "brest", 3, 150);
-        Encounter stMalo = new Encounter(4, EncounterType.BATTLE, "stMalo", 9, 200);
-        Encounter dieppe = new Encounter(5, EncounterType.BLOCKADE, "dieppe", 7, 90);
-        Encounter jersey = new Encounter(6, EncounterType.SKIRMISH, "jersey", 8, 45);
-        Encounter nantes = new Encounter(7, EncounterType.BLOCKADE, "nantes", 6, 130);
-        Encounter finisterre = new Encounter(8, EncounterType.BATTLE, "finisterre", 4, 100);
-        Encounter biscay = new Encounter(9, EncounterType.SKIRMISH, "biscay", 5, 200);
-        Encounter cadiz = new Encounter(10, EncounterType.BATTLE, "cadiz", 1, 250);
+        Encounter belleIsle = new Encounter(2, EncounterType.SKIRMISH,"Belle Isle", 3, 120);
+        Encounter brest = new Encounter(3, EncounterType.BLOCKADE, "Brest", 3, 150);
+        Encounter stMalo = new Encounter(4, EncounterType.BATTLE, "St Malo", 9, 200);
+        Encounter dieppe = new Encounter(5, EncounterType.BLOCKADE, "Dieppe", 7, 90);
+        Encounter jersey = new Encounter(6, EncounterType.SKIRMISH, "Jersey", 8, 45);
+        Encounter nantes = new Encounter(7, EncounterType.BLOCKADE, "Nantes", 6, 130);
+        Encounter finisterre = new Encounter(8, EncounterType.BATTLE, "Finisterre", 4, 100);
+        Encounter biscay = new Encounter(9, EncounterType.SKIRMISH, "Biscay", 5, 200);
+        Encounter cadiz = new Encounter(10, EncounterType.BATTLE, "Cadiz", 1, 250);
         
         encounters.add(trafalgar);
         encounters.add(belleIsle);

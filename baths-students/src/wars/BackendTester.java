@@ -20,7 +20,7 @@ public class BackendTester {
         Sloop arrow = new Sloop("Arrow", "Dan Dare", 150, true, ShipState.RESERVE);
         
         //  Create Encounter
-        Encounter trafalgar = new Encounter(1, EncounterType.BATTLE, "Trafalgar", 3, 300);
+        Encounter brest = new Encounter(3, EncounterType.BLOCKADE, "Brest", 3, 150);
         
         // Create Admiral
         BlueAdmiral thomas = new BlueAdmiral("Thomas", 1000);
@@ -36,7 +36,7 @@ public class BackendTester {
         System.out.println(thomas.toString());
         
         //  Print Encounter Information
-        System.out.println(trafalgar);
+        System.out.println(brest);
         
         // Ship State Testing 
         System.out.println("State is: " + arrow.getState());
@@ -45,9 +45,9 @@ public class BackendTester {
         System.out.println();
         
         // Encounter Testing
-         System.out.println("Encounter Type is: " + trafalgar.getType());
-         trafalgar.setEncounter(EncounterType.BLOCKADE);
-         System.out.println("Encounter Type is: " + trafalgar.getType());
+         System.out.println("Encounter Type is: " + brest.getType());
+         brest.setEncounter(EncounterType.BLOCKADE);
+         System.out.println("Encounter Type is: " + brest.getType());
          System.out.println();
         
         // Ship State If Statement Testing
@@ -56,8 +56,8 @@ public class BackendTester {
         }
         
         // Encounter If Statement Testing
-        if (trafalgar.getType() == EncounterType.BLOCKADE) {
-            System.out.println("Encounter: " + trafalgar.viewLocation() + " has a blockade");
+        if (brest.getType() == EncounterType.BLOCKADE) {
+            System.out.println("Encounter: " + brest.viewLocation() + " has a blockade");
         }
         
     }
