@@ -91,9 +91,11 @@ public class BlueAdmiral
     public String toString()
     {
         String ships = String.join(", ", squadron.keySet());
-        return "Admiral: " + name
-                + "\nWar Chest: " + warChest
-                + "\n Squadron: " + ships;
+        return "####ADMIRAL####\n" 
+                + "Name: " + name + "\n"
+                + "War Chest: " + warChest + "\n"
+                + "Status: " + (squadron.isEmpty() && warChest <= 0 ? "You lost your job" : "Is OK") + "\n"
+                + "Squadron: " + (squadron.isEmpty() ? "[No Ships]" : ships) + "\n";
     }
     
 }
