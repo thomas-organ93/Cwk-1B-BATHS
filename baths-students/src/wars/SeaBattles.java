@@ -303,7 +303,7 @@ public class SeaBattles implements BATHS
       */ 
     public String fightEncounter(int encNo)
     {
-        if (isEncounter(encNo)) return "No such encounter";
+        if (!isEncounter(encNo)) return "No such encounter";
         
         // get encounter
         Encounter encounter = null;
