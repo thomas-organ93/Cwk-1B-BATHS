@@ -39,7 +39,7 @@ public class ManOWar extends Ship {
     @Override
     public String toString() {
         String s = "";
-        s += "####MAN-O-WAR#####\n";
+        s += "####MANOWAR#####\n";
         s += super.toString();
         s += "Decks: " + decks + "\n";
         s += "Marines: " + marines + "\n";

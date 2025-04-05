@@ -22,10 +22,18 @@ public class BackendTester {
         //  Create Encounter
         Encounter trafalgar = new Encounter(1, EncounterType.BATTLE, "Trafalgar", 3, 300);
         
+        // Create Admiral
+        BlueAdmiral thomas = new BlueAdmiral("Thomas", 1000);
+        
         // Print Ship Information
         System.out.println(victory.toString());
         System.out.println(sophie.toString());
         System.out.println(arrow.toString());
+        System.out.println(thomas.toString());
+        
+        thomas.addToSquadron("Victory", victory);
+        thomas.addToSquadron("Sophie", sophie);
+        System.out.println(thomas.toString());
         
         //  Print Encounter Information
         System.out.println(trafalgar);
