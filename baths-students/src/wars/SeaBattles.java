@@ -247,7 +247,7 @@ public class SeaBattles implements BATHS
     {
         for (Ship ship : admiral.getSquadron().values())
         {
-            if (ship.viewName() == nme && ship.getState() == ShipState.ACTIVE)
+            if (ship.viewName().equals(nme) && ship.getState() == ShipState.ACTIVE)
             {
                 return true;
             }
