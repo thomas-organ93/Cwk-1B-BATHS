@@ -389,7 +389,7 @@ public class SeaBattles implements BATHS
             // win + prize money
             admiral.changeWarChestAmount(prizeMoney);
             eliShip.setState(ShipState.RESTING);
-            return "Encounter won by " + eliShip.viewName();
+            return "Victory: Encounter won by " + eliShip.viewName();
         }
         else
         {
@@ -400,7 +400,7 @@ public class SeaBattles implements BATHS
             {
                 return "You are defeated: Encounter is lost and you lose your job" ;
             }
-            return "You are defeated: Lost on battle skill";
+            return "You are defeated: Encounter lost on battle skill";
         }
     }
 
