@@ -76,7 +76,7 @@ public class SeaBattles implements BATHS
         s.append(getReserveFleet()).append("\n");
         s.append("Sunk Ships:\n").append(getSunkShips());
 
-        return s.toString().trim();
+        return s.toString().trim() + "\n";
     }
     
     
@@ -147,7 +147,7 @@ public class SeaBattles implements BATHS
             return s.toString().trim();
         }
         
-        return "No ships commissioned";
+        return "No ships commissioned\n";
         
     }
     
@@ -168,7 +168,7 @@ public class SeaBattles implements BATHS
         if (result.length() > 0) {
             return result.toString().trim();
         } else {
-            return "[No Ships Sunk Yet]\n\n";
+            return "[No Ships Sunk Yet]\n";
         }
     }
     
@@ -225,17 +225,17 @@ public class SeaBattles implements BATHS
         Ship ship = reserveFleet.get(nme);
 
         if (admiral.getSquadron().containsKey(nme)) {
-            return "Not available";
+            return "Not available\n";
         } else if (ship == null) {
-            return "Not found";
+            return "Not found\n";
         } else if (admiral.getWarChest() < ship.getCommissionFee()) {
-            return "Not enough money";
+            return "Not enough money\n";
         } else {
             ship.setState(ShipState.ACTIVE);
             admiral.getSquadron().put(nme, ship);
             admiral.changeWarChestAmount(-ship.getCommissionFee());
             reserveFleet.remove(nme);
-            return "Ship commissioned";
+            return "Ship commissioned\n";
         }
     }
         
@@ -262,27 +262,21 @@ public class SeaBattles implements BATHS
      **/
     public boolean decommissionShip(String nme)
     {
-       if (isInSquadron(nme))
-    {
-        Ship ship = admiral.getSquadron().get(nme);
-        
-       
-        if(ship.getState() == ShipState.SUNK) {
-            return false;
+        if (!admiral.getSquadron().isEmpty()) 
+        {
+            for (Ship ship : admiral.getSquadron().values())
+            {
+                if (ship.viewName().equals(nme) && ship.getState() != ShipState.SUNK)
+                {
+                    ship.setState(ShipState.RESERVE);
+                    admiral.changeWarChestAmount(ship.getCommissionFee() / 2);
+                    admiral.getSquadron().remove(nme);
+                    reserveFleet.put(nme, ship);
+                    return true;
+                }
+            }  
         }
-
-        
-        ship.setState(ShipState.RESERVE);
-
-        admiral.changeWarChestAmount(ship.getCommissionFee() / 2);
-
-        admiral.getSquadron().remove(nme);
-        reserveFleet.put(nme, ship);
-
-        return true;
-    }
-
-    return false;
+        return false;
     }
     
   

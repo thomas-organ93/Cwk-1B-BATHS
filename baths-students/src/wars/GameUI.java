@@ -41,8 +41,11 @@ public class GameUI
             } 
             else if (choice == 4)
             {
-                //write your code here
-
+                //Commission a Ship
+                System.out.println("Enter Ship name");
+                myIn.nextLine();
+                String ref4 = (myIn.nextLine()).trim();
+                System.out.println(myBattles.commissionShip(ref4));
             }
             else if (choice == 5)
             {
@@ -58,9 +61,11 @@ public class GameUI
             }
             else if (choice == 7)
             {
-                //write your code here
-
-
+                //Decommission a Ship
+                System.out.println("Enter Ship name");
+                myIn.nextLine();
+                String ref7 = (myIn.nextLine()).trim();
+                System.out.println(myBattles.decommissionShip(ref7));
             }
             else if (choice==8)
             {
