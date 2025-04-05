@@ -262,20 +262,30 @@ public class SeaBattles implements BATHS
      **/
     public boolean decommissionShip(String nme)
     {
-        if (isInSquadron(nme))
-        {
-            Ship ship = admiral.getSquadron().get(nme);
-
-
-            ship.setState(ShipState.RESERVE);
-
-            admiral.getSquadron().remove(nme);
-            reserveFleet.put(nme, ship);
-
-            return true;
+           if (isInSquadron(nme))
+    {
+        // Get the ship from the squadron
+        Ship ship = admiral.getSquadron().get(nme);
+        
+        // Ensure the ship is not sunk
+        if(ship.getState() == ShipState.SUNK) {
+            return false;
         }
 
-        return false;
+        // Change the state of the ship to RESERVE
+        ship.setState(ShipState.RESERVE);
+
+        // Refund half of the commission fee to the war chest
+        admiral.changeWarChestAmount(ship.getCommissionFee() / 2);
+
+        // Move the ship from the squadron to the reserve fleet
+        admiral.getSquadron().remove(nme);
+        reserveFleet.put(nme, ship);
+
+        return true;
+    }
+
+    return false;
     }
     
   
