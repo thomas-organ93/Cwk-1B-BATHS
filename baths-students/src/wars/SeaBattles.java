@@ -62,10 +62,6 @@ public class SeaBattles implements BATHS
         StringBuilder s = new StringBuilder();
         s.append(admiral).append("\n");
         s.append("Defeated: ").append(isDefeated() ? "Yes" : "No").append("\n\n");
-        s.append("Admiral: ").append(admiral).append("\n");
-        s.append("War Chest: ").append((int) admiral.getWarChest()).append("\n");
-        s.append("Defeated: ").append(isDefeated() ? "You lost your job" : "Is OK").append("\n\n");
-        s.append("Squadron: ");
 
         HashMap<String, Ship> squadron = admiral.getSquadron();
         s.append("All Owned Ships:\n");
