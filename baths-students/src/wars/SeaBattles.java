@@ -531,7 +531,15 @@ public class SeaBattles implements BATHS
      */
     public void saveGame(String fname)
     {   // uses object serialisation 
-          //GameFileHandler.saveGame(this, fname); 
+          //GameFileHandler.saveGame(this, fname);
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fname))) {
+            out.writeObject(this);
+            System.out.println("Game saved to " + fname);
+        } catch (IOException e) {
+            System.out.println("Error while saving the game to " + fname + " : " + e.getMessage());
+        }
+
+
     }
     
     /** reads all information about the game from the specified file 
@@ -541,8 +549,14 @@ public class SeaBattles implements BATHS
      */
     public SeaBattles loadGame(String fname)
     {   // uses object serialisation 
-       
-        return null;//GameFileHandler.loadGame(fname);
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fname))) {
+            SeaBattles loadedGame = (SeaBattles) in.readObject();
+            System.out.println("Game loaded from " + fname);
+            return loadedGame;
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error while loading the game from " + fname + " : " + e.getMessage());
+            return null;//GameFileHandler.loadGame(fname);
+        }
     } 
     
  
