@@ -225,16 +225,17 @@ public class SeaBattles implements BATHS
     {
         Ship ship = reserveFleet.get(nme);
 
-        if (ship == null) {
-            return "Not found";
-        } else if (!ship.getState().equals("available")) {
+        if (admiral.getSquadron().containsKey(nme)) {
             return "Not available";
+        } else if (ship == null) {
+            return "Not found";
         } else if (admiral.getWarChest() < ship.getCommissionFee()) {
             return "Not enough money";
         } else {
             ship.setState(ShipState.ACTIVE);
             admiral.getSquadron().put(nme, ship);
             admiral.changeWarChestAmount(-ship.getCommissionFee());
+            reserveFleet.remove(nme);
             return "Ship commissioned";
         }
     }
