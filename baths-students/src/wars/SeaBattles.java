@@ -262,6 +262,19 @@ public class SeaBattles implements BATHS
      **/
     public boolean decommissionShip(String nme)
     {
+        if (isInSquadron(nme))
+        {
+            Ship ship = admiral.getSquadron().get(nme);
+
+
+            ship.setState(ShipState.RESERVE);
+
+            admiral.getSquadron().remove(nme);
+            reserveFleet.put(nme, ship);
+
+            return true;
+        }
+
         return false;
     }
     
