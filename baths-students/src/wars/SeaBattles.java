@@ -360,7 +360,7 @@ public class SeaBattles implements BATHS
             {
                 return "Encounter is lost and you lose your job" ;
             }
-            return "Encounter lost as no suitable ship available";
+            return "no ship available";
         }
         
         // fight encounter
