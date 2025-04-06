@@ -44,8 +44,6 @@ public class SeaBattles implements BATHS
       this.encounters = new HashSet<>();
         
        setupShips();
-       // setupEncounters();
-       // uncomment for testing Task 
        readEncounters(filename);
     }
     
@@ -524,22 +522,43 @@ public class SeaBattles implements BATHS
             BufferedReader reader = new BufferedReader(
                 new FileReader(fileName));
             String line = reader.readLine();
+            int id = 1;
             while(line != null)
             {
                 if (!line.trim().isEmpty())
                 {
                     String[] fields = line.split(",");
+                    if (fields.length != 4)
+                    {
+                        System.out.println("Invalid line format: " + line
+                                + " Expected 4 fields, got " + fields.length);
+                        line = reader.readLine();
+                        continue;
+                    }
                     
-                    int id = Integer.parseInt(fields[0].trim());
-                    EncounterType type = EncounterType.valueOf(
-                            fields[1].trim().toUpperCase());
-                    String location = fields[2].trim();
-                    int skill = Integer.parseInt(fields[3].trim());
-                    int prize = Integer.parseInt(fields[4].trim());
-                    
-                    Encounter encounter = new Encounter(id, type, location, 
+                    try
+                    {
+                        EncounterType type = EncounterType.valueOf(
+                            fields[0].trim().toUpperCase());
+                        String location = fields[1].trim();
+                        int skill = Integer.parseInt(fields[2].trim());
+                        int prize = Integer.parseInt(fields[3].trim());
+                        
+                        Encounter encounter = new Encounter(id, type, location, 
                             skill, prize);
-                    encounters.add(encounter);
+                        encounters.add(encounter);
+                        id++;
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        System.out.println("Error parsing numbers in line: "
+                                + line + " : " + e.getMessage());
+                    } 
+                    catch (IllegalArgumentException e) 
+                    {
+                        System.out.println("Invalid encounter type in line: "
+                                + line + " : " + e.getMessage());
+                    }
                 }
                 line = reader.readLine();
             }
@@ -568,7 +587,6 @@ public class SeaBattles implements BATHS
      */
     public void saveGame(String fname)
     {   // uses object serialisation
-
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fname))) {
             out.writeObject(this);
             System.out.println("Game saved to " + fname);
@@ -585,8 +603,11 @@ public class SeaBattles implements BATHS
     public SeaBattles loadGame(String fname)
     {   // uses object serialisation 
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fname))) {
-            return (SeaBattles) in.readObject();
+            SeaBattles loaded = (SeaBattles) in.readObject();
+            System.out.println("Game loaded successfully from " + fname);
+            return loaded;
         } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error loading from " + fname + e.getMessage());
             e.printStackTrace();
             return null;
         }

@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * Task 2 - provide command line interface
  * 
- * @author A.A.Marczyk
- * @version 16/02/25
+ * @author A.A.Marczyk, Thomas Organ, Jordan Anyanwu, Nathan McEvoy
+ * @version 06/04/25
  */
 public class GameUI
 {
@@ -17,8 +17,31 @@ public class GameUI
     {
         int choice;
         System.out.println("Enter admiral's name");
-        String name = myIn.nextLine();
-        myBattles = new SeaBattles(name); // create
+        String name = myIn.nextLine().trim();
+        
+        // Choice of start
+        System.out.println("How would you like to start the game?");
+        System.out.println("1. New game with default encounters");
+        System.out.println("2. New game with encounters from encountersAM.txt");
+        int startChoice = -1;
+        while (startChoice < 1 || startChoice > 2)
+        {
+            System.out.println("Enter 1 or 2:");
+            startChoice = myIn.nextInt();
+            myIn.nextLine();
+        }
+        if (startChoice == 1)
+        {
+            myBattles = new SeaBattles(name);
+            System.out.println("Starting new game with default encounters");
+        }
+        else
+        {
+            myBattles = new SeaBattles(name, "encountersAM.txt");
+            System.out.println("Starting new game with encounters from encountersAM.txt");
+        }
+        
+        String defaultFileName = name + ".dat";
         
         choice = 100;
         while (choice != 0 )
@@ -52,8 +75,8 @@ public class GameUI
                //Fight an encounter
                 System.out.println(myBattles.getAllEncounters() + "\n");
                 System.out.println("Select from Encounter No:");
-                myIn.nextLine();
                 int ref5 = (myIn.nextInt());
+                myIn.nextLine();
                 System.out.println(myBattles.fightEncounter(ref5));
             }
             else if (choice ==6)
@@ -83,19 +106,58 @@ public class GameUI
             else if (choice == 9)
             {
                 // Save the game
-                System.out.println("Write to file");
-                myBattles.saveGame("olenka.dat");
+                System.out.println("Save game: Enter filename or press [Enter] for default:");
+                myIn.nextLine();
+                String saveName = myIn.nextLine().trim();
+                if (saveName.isEmpty())
+                {
+                    myBattles.saveGame(defaultFileName);
+                }
+                else 
+                {
+                    if (!saveName.endsWith(".dat"))
+                    {
+                        saveName += ".dat";
+                    }
+                    myBattles.saveGame(saveName);
+                }
            }
            else if (choice == 10) // Load the game
            {
                // Load the game
-               System.out.println("Recommission from file");
-               myBattles = myBattles.loadGame("olenka.dat");
-               if (myBattles != null) {
-                  System.out.println(myBattles.toString());
-                } else {
-                    System.out.println("Failed to load game from olenka.dat");
-                }
+               System.out.println("Load game: Enter filename or press [Enter] for default:");
+               myIn.nextLine();
+               String loadName = myIn.nextLine().trim();
+               if (loadName.isEmpty())
+               {
+                   SeaBattles loaded = myBattles.loadGame(defaultFileName);
+                   if (loaded != null)
+                   {
+                       myBattles = loaded;
+                       System.out.println("Loaded game state:\n" + myBattles.toString());
+                   }
+                   else
+                   {
+                       System.out.println("Failed to load game from " + defaultFileName);
+                   }
+               }
+               else
+               {
+                   if (!loadName.endsWith(".dat"))
+                   {
+                       loadName += ".dat";
+                   }
+                   SeaBattles loaded = myBattles.loadGame(loadName);
+                   if (loaded != null)
+                   {
+                       myBattles = loaded;
+                       System.out.println("Loaded game state:\n" + myBattles.toString());
+                   }
+                   else
+                   {
+                       System.out.println("Failed to load game from " + defaultFileName);
+                   }
+               }
             }
         }
         System.out.println("Thank-you");
