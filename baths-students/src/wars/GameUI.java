@@ -70,7 +70,11 @@ public class GameUI
                 System.out.println("Enter Ship name");
                 myIn.nextLine();
                 String ref7 = (myIn.nextLine()).trim();
-                System.out.println(myBattles.decommissionShip(ref7));
+                if (myBattles.decommissionShip(ref7)) {
+                    System.out.println(ref7 + " has been decommissioned\n");
+                } else {
+                    System.out.println("Cannot be decommissioned\n");
+                }
             }
             else if (choice==8)
             {

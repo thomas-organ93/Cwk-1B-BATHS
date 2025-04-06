@@ -14,11 +14,40 @@ public class MyTester {
         // Create Admiral 
         SeaBattles john = new SeaBattles("John");
         // Show Admiral and Ship details
-        System.out.println(john.toString());
-        // Show all ships
-        System.out.println(john.getAllShips());
         
-
+        // Test ManOWar fighting a Skirmish
+        john.commissionShip("Victory");
+        System.out.println(john.toString());
+        System.out.println(john.fightEncounter(2));
+        System.out.println(john.toString());
+        
+        // Test Sloop fighting a Blockade
+        john.commissionShip("Arrow");
+        System.out.println(john.toString());
+        System.out.println(john.fightEncounter(3));
+        System.out.println(john.toString());
+        
+        // Test Frigate (no pinnace) fighting a Blockade
+        john.commissionShip("Jupiter");
+        System.out.println(john.toString());
+        System.out.println(john.fightEncounter(3));
+        System.out.println(john.toString());
+        
+        // Test Frigate (pinnace) fighting a Blockade
+        john.commissionShip("Sophie");
+        System.out.println(john.toString());
+        System.out.println(john.fightEncounter(3));
+        System.out.println(john.toString());
+        
+        // Decommission a resting ship
+        john.decommissionShip("Sophie");
+        System.out.println(john.toString());
+        
+        // Test Losing the game 
+        System.out.println(john.fightEncounter(4));
+        System.out.println(john.fightEncounter(4));
+        john.restoreShip("Victory");
+        System.out.println(john.fightEncounter(4));
        
 
     }
