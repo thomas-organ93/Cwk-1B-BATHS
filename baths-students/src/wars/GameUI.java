@@ -84,12 +84,15 @@ public class GameUI
            }
            else if (choice == 10) // Load the game
            {
-                // Load the game
-                System.out.println("Recommission from file");
-                SeaBattles myBattles2=null;
-                myBattles2.loadGame("olenka.dat");
-                System.out.println(myBattles2.toString());  
-          }
+               // Load the game
+               System.out.println("Recommission from file");
+               myBattles = myBattles.loadGame("olenka.dat");
+               if (myBattles != null) {
+                  System.out.println(myBattles.toString());
+                } else {
+                    System.out.println("Failed to load game from olenka.dat");
+                }
+            }
         }
         System.out.println("Thank-you");
     }
