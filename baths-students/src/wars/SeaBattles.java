@@ -285,7 +285,15 @@ public class SeaBattles implements BATHS
      */
     public void restoreShip(String ref)
     {
-  
+        Ship ship = null;
+        if (admiral.getSquadron().containsKey(ref))
+        {
+            ship = admiral.getSquadron().get(ref);
+        }
+        if (ship != null && ship.getState() == ShipState.RESTING)
+        {
+            ship.setState(ShipState.ACTIVE);
+        }
         
     }
     
