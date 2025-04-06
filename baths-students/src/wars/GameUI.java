@@ -79,23 +79,16 @@ public class GameUI
             else if (choice == 9)
             {
                 // Save the game
-                System.out.println("Enter filename to save the game:");
-                myIn.nextLine();
-                String filename = (myIn.nextLine()).trim();
-                myBattles.saveGame(filename);
-                System.out.println("Game saved to " + filename);
+                System.out.println("Write to file");
+                myBattles.saveGame("olenka.dat");
            }
            else if (choice == 10) // Load the game
            {
                 // Load the game
-                System.out.println("Enter filename to load the game:");
-                myIn.nextLine();
-                String filename = (myIn.nextLine()).trim();
-                SeaBattles loadedBattles = new SeaBattles("");
-                loadedBattles.loadGame(filename);
-                myBattles = loadedBattles;
-                System.out.println("Game loaded from " + filename);
-                System.out.println(myBattles.toString());
+                System.out.println("Recommission from file");
+                SeaBattles myBattles2=null;
+                myBattles2.loadGame("olenka.dat");
+                System.out.println(myBattles2.toString());  
           }
         }
         System.out.println("Thank-you");
