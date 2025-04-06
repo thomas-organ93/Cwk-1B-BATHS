@@ -329,7 +329,7 @@ public class SeaBattles implements BATHS
       */ 
     public String fightEncounter(int encNo)
     {
-        if (!isEncounter(encNo)) return "No such encounter";
+        if (!isEncounter(encNo)) return "No such encounter\n";
         
         // get encounter
         Encounter encounter = null;
@@ -382,7 +382,7 @@ public class SeaBattles implements BATHS
             {
                 return "You are defeated: Encounter is lost and you lose your job\n" ;
             }
-            return "Retreat: There's no ship available\n";
+            return "Retreat: There is no ship available\n";
         }
         
         // fight encounter

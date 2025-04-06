@@ -11,21 +11,13 @@ package wars;
 public class MyTester {
     
     private void doTest1() {
-        
+        // Create Admiral 
         SeaBattles john = new SeaBattles("John");
-        
-//        System.out.println(john.toString());
-//        System.out.println(john.getAllShips());
-//        System.out.println(john.getReserveFleet());
-
-//        System.out.println(john.getShipDetails("Sophie"));
-        john.commissionShip("Victory");
-        john.commissionShip("Beast");
-//        System.out.println(john.getShipDetails("Sophie"));
+        // Show Admiral and Ship details
         System.out.println(john.toString());
-        john.fightEncounter(7);
-        System.out.println(john.fightEncounter(7));
-        System.out.println(john.getEncounter(2));
+        // Show all ships
+        System.out.println(john.getAllShips());
+        
 
        
 

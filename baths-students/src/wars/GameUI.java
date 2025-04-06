@@ -42,22 +42,27 @@ public class GameUI
             else if (choice == 4)
             {
                 //Commission a Ship
-                System.out.println("Enter Ship name");
+                System.out.println("Enter Ship Name");
                 myIn.nextLine();
                 String ref4 = (myIn.nextLine()).trim();
                 System.out.println(myBattles.commissionShip(ref4));
             }
             else if (choice == 5)
             {
-       	       //write your code here
-       
-                  
+               //Fight an encounter
+                System.out.println(myBattles.getAllEncounters() + "\n");
+                System.out.println("Select from Encounter No:");
+                myIn.nextLine();
+                int ref5 = (myIn.nextInt());
+                System.out.println(myBattles.fightEncounter(ref5));
             }
             else if (choice ==6)
             {
-	        //write your code here
-
-
+                //Restore a Ship
+                System.out.println("Enter Ship name");
+                myIn.nextLine();
+                String ref6 = (myIn.nextLine()).trim();
+                myBattles.restoreShip(ref6);
             }
             else if (choice == 7)
             {
