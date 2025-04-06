@@ -129,6 +129,54 @@ public class T7ChallengeSequences {
 
 
     
-// Add your own tests    
-
+// Add your own tests  
+    
+   @Test
+    public void unsuitableManOWarForSkirmish() {
+        game.commissionShip("Victory");
+        String actual = game.fightEncounter(2);   //retreat , ship cannot battle
+        assertTrue(actual.contains("no ship available"));
+    }
+    
+    @Test
+    public void unsuitableManOWarForSkirmishMoney() {
+        double expected = 1000-500-120;
+        game.commissionShip("Victory");
+        game.fightEncounter(2);   //retreat , ship cannot battle
+        double actual =  game.getWarChest();
+        assertEquals(expected,actual, 0.5);
+    }
+    
+    @Test
+    public void unsuitableSloopForBlockade() {
+        game.commissionShip("Arrow");
+        String actual = game.fightEncounter(3);   //retreat , ship cannot battle
+        assertTrue(actual.contains("no ship available"));
+    }
+    
+    @Test
+    public void unsuitableSloopForBlockadeMoney() {
+        double expected = 1000-150-150;
+        game.commissionShip("Arrow");
+        game.fightEncounter(3);   //retreat , ship cannot battle
+        double actual =  game.getWarChest();
+        assertEquals(expected,actual, 0.5);
+    }
+    
+    @Test
+    public void unsuitableFrigateNoPinnaceForBlockade() {
+        game.commissionShip("Jupiter");
+        String actual = game.fightEncounter(3);   //retreat , ship cannot battle
+        assertTrue(actual.contains("no ship available"));
+    }
+    
+    @Test
+    public void unsuitableFrigateNoPinnaceForBlockadeMoney() {
+        double expected = 1000-200-150;
+        game.commissionShip("Jupiter");
+        game.fightEncounter(3);   //retreat , ship cannot battle
+        double actual =  game.getWarChest();
+        assertEquals(expected,actual, 0.5);
+    }
+    
 }
